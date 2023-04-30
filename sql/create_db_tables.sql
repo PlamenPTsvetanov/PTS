@@ -29,3 +29,12 @@ CREATE TABLE IF NOT EXISTS activities(
     
 	FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE IF NOT EXISTS off_days(
+	id integer primary key auto_increment,
+    actual_date TIMESTAMP not null,
+	type enum('SICK', 'LEAVE', 'HOLIDAY') NOT NULL,
+    user_id integer not null,
+    reasoning varchar(100),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);

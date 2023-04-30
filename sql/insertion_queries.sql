@@ -81,7 +81,7 @@ VALUES
   
   
   
-INSERT INTO tasks (user_id, task_id, message, created_on) VALUES 
+INSERT INTO activities (user_id, task_id, message, created_on) VALUES 
 (11, 67, 'y7FvUM4w4K', '2022-09-11'),
 (12, 22, 'z1IcFH6l7C', '2021-07-19'),
 (13, 89, 'f9XrWQ2e5N', '2022-01-20'),

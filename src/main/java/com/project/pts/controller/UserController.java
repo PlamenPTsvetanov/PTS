@@ -24,7 +24,7 @@ public class UserController {
 
     @Autowired
     private IActivityService activityService;
-    private UserOutView loggedInUser;
+    private static UserOutView loggedInUser;
 
     @RequestMapping(path = "login", method = RequestMethod.GET)
     public ResponseEntity<String> login(@RequestParam("email") String email,
@@ -104,5 +104,9 @@ public class UserController {
         }
 
         return ResponseEntity.ok().body(activityOutViews);
+    }
+
+    public static Long getLoggedId(){
+        return loggedInUser.getId();
     }
 }
