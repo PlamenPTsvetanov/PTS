@@ -20,3 +20,12 @@ CREATE TABLE IF NOT EXISTS followers(
 	PRIMARY KEY (user_id, follower_id)
 );
 
+CREATE TABLE IF NOT EXISTS activities(
+	id integer primary key auto_increment,
+    user_id INTEGER NOT NULL,
+    task_id INTEGER,
+	message varchar(1000) NOT NULL,
+    created_on TIMESTAMP,
+    
+	FOREIGN KEY (user_id) REFERENCES users(id)
+);
