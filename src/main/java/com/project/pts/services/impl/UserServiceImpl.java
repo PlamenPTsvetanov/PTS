@@ -45,13 +45,13 @@ public class UserServiceImpl implements IUserService {
     @Override
     public String followUser(Long userId, Long followId) {
         UserEntity referenceById = userRepository.getReferenceById(followId);
-        if (followerRepository.getByUserIdAndFollowerId(userId, followId) != null){
+        if (followerRepository.getByUserIdAndFollowerId(followId, userId) != null){
             return String.format("You already follow %s!", referenceById.getUsername());
         }
 
         FollowerEntity entity = new FollowerEntity();
-        entity.setUserId(userId);
-        entity.setFollowerId(followId);
+        entity.setUserId(followId);
+        entity.setFollowerId(userId);
 
         followerRepository.save(entity);
         return String.format("You followed %s!", referenceById.getUsername());

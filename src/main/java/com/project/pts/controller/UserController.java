@@ -56,4 +56,30 @@ public class UserController {
 
         return ResponseEntity.ok().body(userOutViews);
     }
+
+    @RequestMapping(path ="/following", method = RequestMethod.GET)
+    public ResponseEntity<Object> getFollowing(){
+        if (loggedInUser == null){
+            return new ResponseEntity<>("Must log in to see followers", HttpStatus.BAD_REQUEST);
+        }
+
+        List<UserOutView> userOutViews = userService.listAllFollowing(loggedInUser.getId());
+
+        if (userOutViews == null){
+            return ResponseEntity.noContent().build();
+        }
+
+        return ResponseEntity.ok().body(userOutViews);
+    }
+
+    @RequestMapping(path ="/follow", method = RequestMethod.POST)
+    public ResponseEntity<Object> followUser(@RequestParam("userId") Long userId){
+        if (loggedInUser == null){
+            return new ResponseEntity<>("Must log in to see followers", HttpStatus.BAD_REQUEST);
+        }
+
+        String message = userService.followUser(loggedInUser.getId(), userId);
+
+        return ResponseEntity.ok().body(message);
+    }
 }
