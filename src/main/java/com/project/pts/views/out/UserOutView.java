@@ -3,6 +3,7 @@ package com.project.pts.views.out;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UserOutView {
+    private Long id;
     @JsonProperty("creationDate")
     private String insertedAt;
     @JsonProperty("firstName")
@@ -14,20 +15,30 @@ public class UserOutView {
     @JsonProperty("email")
     private String emailAddress;
 
-    public UserOutView(){}
+    public UserOutView() {
+    }
 
     public UserOutView(
-                      String insertedAt,
-                      String firstName,
-                      String lastName,
-                      String username,
-                      String emailAddress) {
-
+            Long id,
+            String insertedAt,
+            String firstName,
+            String lastName,
+            String username,
+            String emailAddress) {
+        this.id = id;
         this.insertedAt = insertedAt;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.emailAddress = emailAddress;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getInsertedAt() {

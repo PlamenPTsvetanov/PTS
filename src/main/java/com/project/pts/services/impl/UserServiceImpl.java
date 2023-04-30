@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 @Component
@@ -19,6 +20,12 @@ public class UserServiceImpl implements IUserService {
     private IUserRepository userRepository;
     @Autowired
     private IFollowerRepository followerRepository;
+    public UserOutView login(String email, String password) {
+        ArrayList<UserEntity> objects = new ArrayList<>() {{
+            add(userRepository.login(email, password));
+        }};
+        return map(objects).get(0);
+    }
 
     @Override
     public List<UserOutView> listAllUsers() {
@@ -62,7 +69,9 @@ public class UserServiceImpl implements IUserService {
     private List<UserOutView> map(List<UserEntity> all){
         return all
                 .stream()
-                .map(u -> new UserOutView(u.getInsertedAt(),
+                .map(u -> new UserOutView(
+                        u.getId(),
+                        u.getInsertedAt(),
                         u.getFirstName(),
                         u.getLastName(),
                         u.getUsername(),

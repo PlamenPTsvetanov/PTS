@@ -10,6 +10,8 @@ import java.util.List;
 public interface IUserService {
     List<UserOutView> listAllUsers();
 
+    UserOutView login(String email, String password);
+
     List<UserOutView> listAllFollowing(Long userId);
 
     List<UserOutView> listAllFollowers(Long userId);

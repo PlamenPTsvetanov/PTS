@@ -10,6 +10,9 @@ import java.util.List;
 
 @Repository
 public interface IUserRepository extends JpaRepository<UserEntity, Long> {
+    @Query("SELECT u FROM UserEntity u where u.emailAddress = :emailAddress and u.password = :password")
+    UserEntity login(@Param("emailAddress") String emailAddress,
+                     @Param("password") String password);
 
     @Query("select u from UserEntity u")
     List<UserEntity> getAll();
