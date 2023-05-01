@@ -1,9 +1,9 @@
 package com.project.pts.controller;
 
-import com.project.pts.services.IActivityService;
+import com.project.pts.services.ITaskService;
 import com.project.pts.services.IUserService;
 import com.project.pts.views.in.UserInView;
-import com.project.pts.views.out.ActivityOutView;
+import com.project.pts.views.out.TaskOutView;
 import com.project.pts.views.out.UserOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,7 +24,7 @@ public class UserController {
     private IUserService userService;
 
     @Autowired
-    private IActivityService activityService;
+    private ITaskService activityService;
     private static UserOutView loggedInUser;
 
     @RequestMapping(path = "login", method = RequestMethod.GET)
@@ -99,12 +99,12 @@ public class UserController {
         }
 
         List<UserOutView> userOutViews = userService.listAllFollowing(loggedInUser.getId());
-        List<ActivityOutView> activityOutViews = new ArrayList<>();
+        List<TaskOutView> taskOutViews = new ArrayList<>();
         for (UserOutView userOutView : userOutViews) {
-            activityOutViews.add(activityService.getNewestActivityByUser(userOutView.getId()));
+            taskOutViews.addAll(activityService.getNewestActivityByUser(userOutView.getId()));
         }
-
-        return ResponseEntity.ok().body(activityOutViews);
+        taskOutViews.sort((f,s)-> s.getStart().compareTo(f.getStart()));
+        return ResponseEntity.ok().body(taskOutViews);
     }
 
     @RequestMapping(path = "/find", method = RequestMethod.GET)
@@ -120,7 +120,7 @@ public class UserController {
         return ResponseEntity.ok().body(userService.findUser(inView));
     }
 
-    public static Long getLoggedId(){
+    public static Long getLoggedId() {
         return loggedInUser.getId();
     }
 }

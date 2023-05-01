@@ -79,26 +79,26 @@ VALUES
   (20, 18),
   (20, 19);
   
-  
-  
-INSERT INTO activities (user_id, task_id, message, created_on) VALUES 
-(11, 67, 'y7FvUM4w4K', '2022-09-11'),
-(12, 22, 'z1IcFH6l7C', '2021-07-19'),
-(13, 89, 'f9XrWQ2e5N', '2022-01-20'),
-(14, 3, 'm2GnVJ1v9R', '2021-08-09'),
-(15, 94, 'a8DhTN1n0F', '2022-02-27'),
-(16, 50, 'o5PcBZ3q8W', '2022-03-07'),
-(17, 35, 'x9JpLV7g6E', '2021-11-05'),
-(18, 51, 'l0FrVE3t4A', '2022-04-22'),
-(19, 98, 'k4NnYU6m9S', '2022-01-10'),
-(20, 19, 'e2QwZD0h6M', '2022-02-18'),
-(11, 78, 'd7JfHO1u0Y', '2023-04-13'),
-(12, 76, 'q3CxWM8p2K', '2022-10-08'),
-(13, 92, 'b1LtRY0z5F', '2021-12-16'),
-(14, 58, 'r9VsEP5i3H', '2022-09-07'),
-(15, 15, 'c6GmUO9j1X', '2021-11-23'),
-(16, 17, 'w8RnQZ2s4E', '2023-01-05'),
-(17, 65, 'y4DuQW1l7V', '2021-10-15'),
-(18, 47, 'p2IxJH3k9A', '2022-12-18'),
-(19, 39, 't5NcVW8o1S', '2022-06-30'),
-(20, 25, 'f4MnKJ0b2G', '2022-08-02');
+INSERT INTO tasks (inserted_at, user_id, name, description, start_date, end_date, is_deleted)
+VALUES 
+('2023-05-01', 14, 'Design New Logo', 'Create a new logo for the company rebranding', '2023-05-01 08:00:00', DATE_ADD('2023-05-01 08:00:00', INTERVAL 1 HOUR), false),
+('2023-04-30', 19, 'Develop Mobile App', 'Build and test a new mobile app for the company', '2023-04-30 10:00:00', DATE_ADD('2023-04-30 10:00:00', INTERVAL 1 HOUR), false),
+('2023-04-29', 11, 'Conduct Market Analysis', 'Gather data and insights to better understand target market', '2023-04-29 13:00:00', DATE_ADD('2023-04-29 13:00:00', INTERVAL 1 HOUR), false),
+('2023-04-28', 16, 'Prepare Financial Report', 'Analyze financial data and prepare report for stakeholders', '2023-04-28 14:00:00', DATE_ADD('2023-04-28 14:00:00', INTERVAL 1 HOUR), false),
+('2023-04-27', 17, 'Write Blog Article', 'Create an informative and engaging blog post for the company website', '2023-04-27 12:00:00', DATE_ADD('2023-04-27 12:00:00', INTERVAL 1 HOUR), false),
+('2023-04-26', 15, 'Design UI Mockups', 'Create user interface mockups for new software release', '2023-04-26 09:00:00', DATE_ADD('2023-04-26 09:00:00', INTERVAL 1 HOUR), false),
+('2023-04-25', 12, 'Plan Marketing Campaign', 'Develop a comprehensive marketing campaign for the upcoming product launch', '2023-04-25 11:00:00', DATE_ADD('2023-04-25 11:00:00', INTERVAL 1 HOUR), false),
+('2023-04-24', 13, 'Test Website Performance', 'Conduct testing and analysis to optimize website performance', '2023-04-24 15:00:00', DATE_ADD('2023-04-24 15:00:00', INTERVAL 1 HOUR), false),
+('2023-04-23', 18, 'Create Social Media Strategy', 'Develop a social media strategy to increase brand awareness', '2023-04-23 16:00:00', DATE_ADD('2023-04-23 16:00:00', INTERVAL 1 HOUR), false),
+('2023-04-22', 20, 'Train Customer Support Staff', 'Provide training and support to customer support staff', '2023-04-22 13:00:00', DATE_ADD('2023-04-22 13:00:00', INTERVAL 1 HOUR), false),
+('2023-04-21', 14, 'Revise Employee Handbook', 'Update the employee handbook to reflect company policies and procedures', '2023-04-21 10:00:00', DATE_ADD('2023-04-21 10:00:00', INTERVAL 1 HOUR), false),
+('2023-04-20', 19, 'Create Product Roadmap', 'Develop a roadmap for the company product line', '2023-04-20 11:00:00', DATE_ADD('2023-04-20 11:00:00', INTERVAL 1 HOUR), false),
+('2023-04-19', 11, 'Research Industry Trends', 'Conduct research to stay up-to-date on industry trends and best practices', '2023-04-19 14:00:00', DATE_ADD('2023-04-19 14:00:00', INTERVAL 1 HOUR), false),
+('2023-04-18', 16, 'Prepare Sales Report', 'Analyze sales data and prepare report for management', '2023-04-18 12:00:00', DATE_ADD('2023-04-18 12:00:00', INTERVAL 1 HOUR), false),
+('2023-04-17', 17, 'Write Technical Documentation', 'Create technical documentation for the new software release', '2023-04-17 09:00:00', DATE_ADD('2023-04-17 09:00:00', INTERVAL 1 HOUR), false),
+('2023-04-16', 15, 'Design Product Packaging', 'Create packaging designs for the new product line', '2023-04-16 16:00:00', DATE_ADD('2023-04-16 16:00:00', INTERVAL 1 HOUR), false),
+('2023-04-15', 12, 'Develop Sales Training Program', 'Create a training program to enhance sales skills and techniques', '2023-04-15 13:00:00', DATE_ADD('2023-04-15 13:00:00', INTERVAL 1 HOUR), false),
+('2023-04-14', 13, 'Test Software Compatibility', 'Conduct testing and analysis to ensure software compatibility with different operating systems', '2023-04-14 10:00:00', DATE_ADD('2023-04-14 10:00:00', INTERVAL 1 HOUR), false),
+('2023-04-13', 18, 'Create Email Marketing Campaign', 'Develop an email marketing campaign to promote new product launch', '2023-04-13 15:00:00', DATE_ADD('2023-04-13 15:00:00', INTERVAL 1 HOUR), false),
+('2023-04-12', 20, 'Train New Hires', 'Provide training to new employees on company policies, procedures and software', '2023-04-12 14:00:00', DATE_ADD('2023-04-12 14:00:00', INTERVAL 1 HOUR), false),
+('2023-04-11', 14, 'Revamp Company Website', 'Redesign and restructure company website for improved user experience', '2023-04-11 11:00:00', DATE_ADD('2023-04-11 11:00:00', INTERVAL 1 HOUR), false);

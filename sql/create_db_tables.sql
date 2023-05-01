@@ -20,14 +20,17 @@ CREATE TABLE IF NOT EXISTS followers(
 	PRIMARY KEY (user_id, follower_id)
 );
 
-CREATE TABLE IF NOT EXISTS activities(
-	id integer primary key auto_increment,
-    user_id INTEGER NOT NULL,
-    task_id INTEGER,
-	message varchar(1000) NOT NULL,
-    created_on TIMESTAMP,
+CREATE TABLE IF NOT EXISTS tasks(
+	id integer PRIMARY KEY auto_increment,
+	inserted_at timestamp NOT NULL DEFAULT NOW(),
+	user_id integer NOT NULL,
+	name varchar(60) NOT NULL,
+	description varchar(200),
+	start_date timestamp NOT NULL,
+	end_date timestamp NOT NULL,
+	is_deleted boolean DEFAULT FALSE,
     
-	FOREIGN KEY (user_id) REFERENCES users(id)
+    foreign key (user_id) references users(id)
 );
 
 CREATE TABLE IF NOT EXISTS off_days(
