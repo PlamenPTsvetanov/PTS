@@ -11,6 +11,4 @@ import java.util.List;
 
 @Repository
 public interface IOffDayRepository extends JpaRepository<OffDayEntity, Long> {
-
-    List<OffDayEntity> getAllByUser_IdOrType(Long userId, OffDayEnum type);
 }

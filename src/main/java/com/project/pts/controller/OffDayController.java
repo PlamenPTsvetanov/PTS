@@ -1,10 +1,8 @@
 package com.project.pts.controller;
 
-import com.project.pts.entities.OffDayEntity;
 import com.project.pts.entities.OffDayEnum;
 import com.project.pts.services.OffDayService;
 import com.project.pts.views.in.OffDayInView;
-import com.project.pts.views.out.UserOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +25,8 @@ public class OffDayController {
         return ResponseEntity.ok().body(message);
     }
 
-    @RequestMapping(path = "/user", method = RequestMethod.GET)
-    public ResponseEntity<Object> forUser() {
-        return ResponseEntity.ok().body(service.getOffDaysForUser(UserController.getLoggedId()));
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<Object> getAllOffDays() {
+        return ResponseEntity.ok().body(service.getAllOffDays());
     }
 }

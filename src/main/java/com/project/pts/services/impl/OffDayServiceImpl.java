@@ -36,8 +36,8 @@ public class OffDayServiceImpl implements OffDayService {
     }
 
     @Override
-    public List<OffDayOutView> getOffDaysForUser(Long userId) {
-        List<OffDayEntity> all = repository.getAllByUser_IdOrType(userId, OffDayEnum.HOLIDAY);
+    public List<OffDayOutView> getAllOffDays() {
+        List<OffDayEntity> all = repository.findAll();
         List<OffDayOutView> view = new ArrayList<>();
 
         for (OffDayEntity offDayEntity : all) {

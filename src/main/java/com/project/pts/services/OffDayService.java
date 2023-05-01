@@ -10,5 +10,5 @@ import java.util.List;
 public interface OffDayService {
     boolean createOffDay(OffDayInView in);
 
-    List<OffDayOutView> getOffDaysForUser(Long userId);
+    List<OffDayOutView> getAllOffDays();
 }
