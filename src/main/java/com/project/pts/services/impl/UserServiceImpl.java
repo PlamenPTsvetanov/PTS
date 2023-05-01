@@ -9,7 +9,6 @@ import com.project.pts.views.in.UserInView;
 import com.project.pts.views.out.UserOutView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,6 +64,8 @@ public class UserServiceImpl implements IUserService {
                 inView.getEmailAddress());
         return map(byParams);
     }
+
+
 
     private List<UserOutView> map(List<UserEntity> all){
         return all

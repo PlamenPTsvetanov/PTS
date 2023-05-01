@@ -5,10 +5,7 @@ import com.project.pts.repositories.IActivityRepository;
 import com.project.pts.services.IActivityService;
 import com.project.pts.views.out.ActivityOutView;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Component;
-
-import java.awt.print.Pageable;
 
 @Component
 public class ActivityServiceImpl implements IActivityService {

@@ -2,6 +2,7 @@ package com.project.pts.controller;
 
 import com.project.pts.services.IActivityService;
 import com.project.pts.services.IUserService;
+import com.project.pts.views.in.UserInView;
 import com.project.pts.views.out.ActivityOutView;
 import com.project.pts.views.out.UserOutView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -104,6 +105,19 @@ public class UserController {
         }
 
         return ResponseEntity.ok().body(activityOutViews);
+    }
+
+    @RequestMapping(path = "/find", method = RequestMethod.GET)
+    public ResponseEntity<Object> find(@RequestParam(value = "firstName", required = false) String firstName,
+                                       @RequestParam(value = "lastName", required = false) String lastName,
+                                       @RequestParam(value = "username", required = false) String username,
+                                       @RequestParam(value = "email", required = false) String email) {
+        if (loggedInUser == null) {
+            return new ResponseEntity<>("Must log in to search for user!", HttpStatus.BAD_REQUEST);
+        }
+        UserInView inView = new UserInView(firstName, lastName, username, email);
+
+        return ResponseEntity.ok().body(userService.findUser(inView));
     }
 
     public static Long getLoggedId(){
