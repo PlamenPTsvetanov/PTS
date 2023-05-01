@@ -24,7 +24,7 @@ public class UserController {
     private IUserService userService;
 
     @Autowired
-    private ITaskService activityService;
+    private ITaskService taskService;
     private static UserOutView loggedInUser;
 
     @RequestMapping(path = "login", method = RequestMethod.GET)
@@ -41,7 +41,9 @@ public class UserController {
     @RequestMapping(method = RequestMethod.GET)
     public ResponseEntity<Object> getAll() {
         List<UserOutView> userOutViews = userService.listAllUsers();
-
+        if (loggedInUser == null) {
+            return new ResponseEntity<>("Must log in to see users!", HttpStatus.BAD_REQUEST);
+        }
         if (userOutViews == null) {
             return new ResponseEntity<>("No users!", HttpStatus.BAD_REQUEST);
         }
@@ -101,7 +103,7 @@ public class UserController {
         List<UserOutView> userOutViews = userService.listAllFollowing(loggedInUser.getId());
         List<TaskOutView> taskOutViews = new ArrayList<>();
         for (UserOutView userOutView : userOutViews) {
-            taskOutViews.addAll(activityService.getNewestActivityByUser(userOutView.getId()));
+            taskOutViews.addAll(taskService.getNewestActivityByUser(userOutView.getId()));
         }
         taskOutViews.sort((f,s)-> s.getStart().compareTo(f.getStart()));
         return ResponseEntity.ok().body(taskOutViews);
@@ -121,6 +123,6 @@ public class UserController {
     }
 
     public static Long getLoggedId() {
-        return loggedInUser.getId();
+        return loggedInUser == null ? null : loggedInUser.getId();
     }
 }

@@ -14,6 +14,8 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Component
 public class OffDayServiceImpl implements OffDayService {
@@ -27,9 +29,18 @@ public class OffDayServiceImpl implements OffDayService {
     public boolean createOffDay(OffDayInView in) {
         try {
             UserEntity user = userRepository.getReferenceById(in.getUserId());
-            OffDayEntity offDayEntity = new OffDayEntity(in.getActualDate(), user, in.getType(), in.getReasoning());
+            switch (in.getType()) {
+                case "SICK":
+                case "LEAVE":
+                case "HOLIDAY":
+                    break;
+                default:
+                    return false;
+            }
+
+            OffDayEntity offDayEntity = new OffDayEntity(in.getActualDate(), user, OffDayEnum.valueOf(in.getType()), in.getReasoning());
             repository.save(offDayEntity);
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
         return true;
@@ -38,6 +49,7 @@ public class OffDayServiceImpl implements OffDayService {
     @Override
     public List<OffDayOutView> getAllOffDays() {
         List<OffDayEntity> all = repository.findAll();
+        all.sort((f,s)->f.getActualDate().compareTo(s.getActualDate()));
         List<OffDayOutView> view = new ArrayList<>();
 
         for (OffDayEntity offDayEntity : all) {
@@ -47,9 +59,9 @@ public class OffDayServiceImpl implements OffDayService {
         return view;
     }
 
-    private OffDayOutView map(OffDayEntity entity){
+    private OffDayOutView map(OffDayEntity entity) {
         String color = "";
-        switch (entity.getType()){
+        switch (entity.getType()) {
             case SICK:
                 color = "#00BEFF";
                 break;

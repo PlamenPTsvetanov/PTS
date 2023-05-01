@@ -7,8 +7,8 @@ import jakarta.persistence.Enumerated;
 public class OffDayInView {
 
     private String actualDate;
-    @Enumerated(EnumType.STRING)
-    private OffDayEnum type;
+
+    private String type;
 
     private String reasoning;
 
@@ -17,7 +17,7 @@ public class OffDayInView {
     public OffDayInView() {
     }
 
-    public OffDayInView(String actualDate, Long userId, OffDayEnum type, String reasoning) {
+    public OffDayInView(String actualDate, Long userId, String type, String reasoning) {
         this.actualDate = actualDate;
         this.userId = userId;
         this.type = type;
@@ -40,11 +40,11 @@ public class OffDayInView {
         this.actualDate = actualDate;
     }
 
-    public OffDayEnum getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(OffDayEnum type) {
+    public void setType(String type) {
         this.type = type;
     }
 
